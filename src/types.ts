@@ -1,0 +1,104 @@
+export interface Topic {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  color: string;
+  createdAt: string;
+}
+
+export interface Subtopic {
+  id: string;
+  topicId: string;
+  name: string;
+  description?: string;
+  coreConcepts?: string[]; // short bullet items
+  createdAt: string;
+}
+
+export interface PdfItem {
+  id: string;
+  subtopicId: string;
+  title: string;
+  fileName: string;
+  fileSize: string;
+  fileData?: string; // Base64 data for offline access
+  url?: string; // Web URL link for public papers
+  createdAt: string;
+}
+
+export interface NoteItem {
+  id: string;
+  subtopicId: string;
+  title: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface VideoItem {
+  id: string;
+  subtopicId: string;
+  title: string;
+  url: string;
+  platform: 'youtube' | 'generic';
+  createdAt: string;
+}
+
+export interface ConceptItem {
+  id: string;
+  subtopicId: string;
+  title: string;
+  content: string;
+  codeSnippet?: string;
+  createdAt: string;
+}
+
+export interface CodingItem {
+  id: string;
+  subtopicId: string;
+  title: string;
+  difficulty: 'easy' | 'medium' | 'hard';
+  problemStatement: string;
+  starterCode?: string;
+  solution?: string;
+  createdAt: string;
+}
+
+export interface InterviewItem {
+  id: string;
+  subtopicId: string;
+  question: string;
+  answer: string;
+  level: 'junior' | 'mid' | 'senior';
+  createdAt: string;
+}
+
+export interface QuizItem {
+  id: string;
+  subtopicId: string;
+  question: string;
+  options: string[];
+  correctIndex: number;
+  explanation: string;
+  createdAt: string;
+}
+
+export interface DatabaseState {
+  topics: Topic[];
+  subtopics: Subtopic[];
+  pdfs: PdfItem[];
+  notes: NoteItem[];
+  videos: VideoItem[];
+  concepts: ConceptItem[];
+  coding: CodingItem[];
+  interviews: InterviewItem[];
+  quizzes: QuizItem[];
+}
+
+export interface CustomUser {
+  email: string;
+  name: string;
+  picture?: string;
+  isAuthenticated: boolean;
+}
